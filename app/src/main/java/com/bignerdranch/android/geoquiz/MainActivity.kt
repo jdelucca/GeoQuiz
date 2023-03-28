@@ -2,9 +2,12 @@ package com.bignerdranch.android.geoquiz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import com.bignerdranch.android.geoquiz.databinding.ActivityMainBinding
+
+private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private var currentIndex = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "onCreate(Bundle?) called")
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.nextButton.setOnClickListener{
@@ -36,6 +40,27 @@ class MainActivity : AppCompatActivity() {
             checkAnswer(false)
         }
         updateQuestion()
+    }
+    override fun onStart(){
+        super.onStart()
+        Log.d(TAG, "onStart")
+    }
+    override fun onResume(){
+        super.onResume()
+        Log.d(TAG, "onResume")
+    }
+    override fun onPause(){
+        super.onPause()
+        Log.d(TAG, "onPause")
+    }
+    override fun onStop(){
+        super.onStop()
+        Log.d(TAG, "onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy")
     }
 
     private fun updateQuestion() {
