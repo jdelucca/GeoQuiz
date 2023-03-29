@@ -4,13 +4,14 @@ plugins {
 }
 
 android {
+    namespace 'com.bignerdranch.android.geoquiz'
     compileSdkVersion 33
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.bignerdranch.android.geoquiz"
         minSdkVersion 24
-        targetSdkVersion 33
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
 
