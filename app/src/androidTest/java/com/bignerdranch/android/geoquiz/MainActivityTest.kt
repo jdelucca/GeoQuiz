@@ -1,5 +1,6 @@
 package com.bignerdranch.android.geoquiz
 
+import android.util.Log
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.espresso.Espresso.onView
@@ -20,7 +21,10 @@ class MainActivityTest {
     private lateinit var scenario: ActivityScenario<MainActivity>
     @Before
     fun setUp() {
+        Log.d("setup", "before scenario init")
         scenario = launch(MainActivity::class.java)
+        Log.d("setup", "after scenario init")
+        Log.d("setup", "scenario" + scenario)
     }
 
     @After
