@@ -3,7 +3,7 @@ package com.bignerdranch.android.geoquiz
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+import android.view.View
 import android.widget.Toast
 import com.bignerdranch.android.geoquiz.databinding.ActivityMainBinding
 import androidx.lifecycle.*
@@ -11,7 +11,7 @@ import androidx.activity.viewModels
 
 private const val TAG = "MainActivity"
 
-class MainActivity : AppCompatActivity() {
+class  MainActivity : AppCompatActivity() {
 
     private val quizViewModel: QuizViewModel by viewModels()
 
@@ -25,15 +25,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         Log.d(TAG, "Got a QuizViewModel: $quizViewModel")
 
-        binding.nextButton.setOnClickListener{
+        binding.nextButton.setOnClickListener{view: View ->
             quizViewModel.moveToNext()
             updateQuestion()
         }
 
-        binding.trueButton.setOnClickListener{
+        binding.trueButton.setOnClickListener{view: View ->
             checkAnswer(true)
         }
-        binding.falseButton.setOnClickListener{
+        binding.falseButton.setOnClickListener{view: View ->
             checkAnswer(false)
         }
         updateQuestion()
