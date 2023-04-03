@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.cheatButton.setOnClickListener{
-            val intent = Intent(this, CheatActivity::class.java)
+            val intent = CheatActivity.newIntent(this, quizViewModel.currentQuestionAnswer)
             startActivity(intent)
         }
 
