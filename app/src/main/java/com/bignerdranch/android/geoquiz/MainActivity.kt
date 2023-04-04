@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bignerdranch.android.geoquiz.databinding.ActivityMainBinding
@@ -16,6 +17,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private val quizViewModel: QuizViewModel by viewModels()
+    private val cheatLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        //handle the result.
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.cheatButton.setOnClickListener{
-            val intent = CheatActivity.newIntent(this, quizViewModel.currentQuestionAnswer)
+            val intent = CheatActivity.newIntent(this@MainActivity, quizViewModel.currentQuestionAnswer)
             startActivity(intent)
         }
 
